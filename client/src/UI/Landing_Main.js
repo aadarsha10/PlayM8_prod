@@ -13,11 +13,6 @@ import AdminDashboard from './AdminDashboard';
 class Landing_Main extends Component {
     render() {
         return (
-
-            // {/* <NavLink to = '/register'>register</NavLink> */}
-            // {/* <Switch>
-            // <Route path='/register' component={Register}></Route>
-            // </Switch> */}
             <div>
                 {/* <Route path='/' component={Landing} /> */}
                 <Route path='/organizer/register' exact component={RegistrationOrganizer} />
