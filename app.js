@@ -6,16 +6,12 @@ const route_organizer_details = require('./route/organizer_route')
 const route_admin = require('./route/admin_route');
 const route_player = require('./route/playerSignup_route');
 const request_route = require("./route/admin_request_route");
-const dotenv = require("dotenv");
-
 require('./database/db');
 
 // -----
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(cors());
-
-dotenv.config({ path: "./config.env" })
 // -----
 // API******************//
 app.use(route_organizer_details)
