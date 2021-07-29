@@ -4,7 +4,7 @@ import "../scss/login.scss";
 import { Form } from "react-bootstrap";
 // import Alert from 'react-bootstrap/Alert'
 import axios from "axios";
-import LandingNavbar from "./LandingNavbar";
+import LandingNavbar from "../Components/LandingNavbar";
 
 export default function Login() {
   const [Username, setUsername] = useState("");
