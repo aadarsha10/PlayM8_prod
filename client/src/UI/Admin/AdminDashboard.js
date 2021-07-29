@@ -1,11 +1,10 @@
 import React from 'react'
 import './sideNav.css'
-import SideBarComponent from '../../Components/SideBarComponent'
+import SideBarComponent from './SideBarComponent'
 import axios from "axios";
 import { Table, Button } from "react-bootstrap";
 import { useState, useEffect } from "react";
 import Footer from '../../Components/Footer'
-// import NavBar from '../../Components/NavBar';
 
 export default function AdminSideNav() {
 
