@@ -1,6 +1,6 @@
 const express = require('express')
 const router = express.Router()
-const admin_request = require('../models/admin_request_model')
+const organizer = require('../models/organizer_detail_model')
 const email_noti = require('../middleware/email_notifier.js')
 const { check, validationResult } = require('express-validator')
 const bcryptjs = require('bcryptjs')
@@ -26,7 +26,7 @@ router.post('/admin/approve/register', [
         const Email = req.body.Email
         const Password = req.body.Password
         bcryptjs.hash(Password, 10, function (err, hash) {
-            const reg_request = new admin_request({
+            const org_details = new organizer({
                 Fullname: Fullname,
                 Address: Address,
                 Contact: Contact,
@@ -34,11 +34,10 @@ router.post('/admin/approve/register', [
                 Email: Email,
                 Password: hash
             })
-            console.log("details:", reg_request)
-            reg_request.save().then(function (result) {
+            console.log("details:", org_details)
+            org_details.save().then(function (result) {
                 if (res.json({
                     message: "Registered",
-
                 })
                 ) {
                     // email_noti.mailer((Email.toString()));
