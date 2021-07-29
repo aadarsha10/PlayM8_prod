@@ -1,10 +1,10 @@
 import React, { useState } from "react";
-import NavBar from "../Components/NavBar";
+// import NavBar from "../Components/NavBar";
 import "../scss/login.scss";
 import { Form } from "react-bootstrap";
 // import Alert from 'react-bootstrap/Alert'
 import axios from "axios";
-import LandingNavbar from "../Components/LandingNavbar";
+import LandingNavbar from "../Components/LandingNavbar.js"
 
 export default function Login() {
   const [Username, setUsername] = useState("");
