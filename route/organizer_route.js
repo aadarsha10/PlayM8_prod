@@ -1,44 +1,12 @@
 const express = require('express')
 const router = express.Router()
-const organizer = require('../models/organizer_detail_model')
+const admin_request = require('../models/admin_request_model')
+const email_noti = require('../middleware/email_notifier.js')
 const { check, validationResult } = require('express-validator')
 const bcryptjs = require('bcryptjs')
 const jwt = require('jsonwebtoken')
-const nodemailer = require("nodemailer");
 
-let transporter = nodemailer.createTransport({
-    host: "smtp.gmail.com",
-    port: 465,
-    secure: true, // true for 465, false for other ports
-    service: "Gmail",
-    auth: {
-        user: 'm.playm08@gmail.com', // email address user
-        pass: 'm8@Play1234', // email password
-    },
-}); // initiating email sender variable
-
-function mailer(mail_to) {
-    // verify connection configuration
-    transporter.verify(function (error, success) {
-        if (error) {
-            console.log(error);
-        } else {
-            console.log("Server is ready to take our messages");
-        }
-    });
-
-    // send mail with defined transport object
-    let confirmMail = transporter.sendMail({
-        from: '"Play M8👻" <m.playm08@gmail.com>', // sender address
-        to: mail_to, // list of receivers
-        subject: "Registration Successful! ✔", // Subject line
-        text: "Hello Organizer", // plain text body
-        html: "<b>Registered Successfully</b><br><b>Welcome to the PlayM8 family</b>", // html body
-    });
-    console.log("Message sent: %s", confirmMail.messageId);
-}
-
-router.post('/organizer/register', [
+router.post('/admin/approve/register', [
     check('Fullname', 'Firstname is required').not().isEmpty(),
     check('Address', 'Address is required').not().isEmpty(),
     check('Contact', 'Contact must be valid').isMobilePhone(),
@@ -58,7 +26,7 @@ router.post('/organizer/register', [
         const Email = req.body.Email
         const Password = req.body.Password
         bcryptjs.hash(Password, 10, function (err, hash) {
-            const org_details = new organizer({
+            const reg_request = new admin_request({
                 Fullname: Fullname,
                 Address: Address,
                 Contact: Contact,
@@ -66,13 +34,15 @@ router.post('/organizer/register', [
                 Email: Email,
                 Password: hash
             })
-            console.log("details:", org_details)
-            org_details.save().then(function (result) {
+            console.log("details:", reg_request)
+            reg_request.save().then(function (result) {
                 if (res.json({
-                    message: "Registered"
+                    message: "Registered",
+
                 })
                 ) {
-                    mailer(Email.toString())
+                    // email_noti.mailer((Email.toString()));
+                    email_noti(Email.toString())
                 } else {
                     (console.error)
                 }
@@ -84,8 +54,8 @@ router.post('/organizer/register', [
     else {
         const error = validationError.errors[0].msg
         console.log("error", error)
-        res.json({message : error })
-        
+        res.json({ message: error })
+
     }
 })
 

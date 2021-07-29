@@ -1,34 +1,22 @@
+const mongoose = require('mongoose')
 
-async function listDatabases(client) {
-    databasesList = await client.db().admin().listDatabases();
+// var uri = "mongodb://127.0.0.1:27017/PlayM8"
+var uri = "mongodb+srv://playm8:p%40ssword123@play-m8.b3c9f.mongodb.net/playM8?retryWrites=true&w=majority"
+mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true });
 
-    console.log("Databases:");
-    databasesList.databases.forEach(db => console.log(` - ${db.name}`));
-};
-var MongoClient = require('mongodb').MongoClient;
+const connection = mongoose.connection;
 
-async function main() {
-    /**
-     * Connection URI. Update <username>, <password>, and <your-cluster-url> to reflect your cluster.
-     * See https://docs.mongodb.com/ecosystem/drivers/node/ for more details
-     */
-    const uri = "mongodb+srv://playm8:p%40ssword123@play-m8.b3c9f.mongodb.net";
+try {
+    // Connect to the MongoDB cluster
+    connection.once("open", function () {
+        console.log("Database Connection Established Successfully..");
+    });
 
+    // Make the appropriate DB calls
+    // connection.listDatabases(connection);
 
-    const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
-
-    try {
-        // Connect to the MongoDB cluster
-        await client.connect();
-
-        // Make the appropriate DB calls
-        await listDatabases(client);
-
-    } catch (e) {
-        console.error(e);
-    } finally {
-        await client.close();
-    }
+} catch (e) {
+    console.error(e);
+} finally {
+    connection.close();
 }
-
-main().catch(console.error);
