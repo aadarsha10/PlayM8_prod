@@ -25,10 +25,10 @@ export default function LandingNavbar() {
 
           <div className="flex flex-right">
             <Form inline className="flex flex-right">
-              <div className=" flex flex-right"><Button variant="success"><Link className="landingNav-button-login" to="../organizer/login">Organizer Login</Link></Button>&nbsp;
-                <Button variant="success"><Link className="landingNav-button-login" to="../player/login">Player Login</Link></Button>&nbsp;
+              <div className=" flex flex-right"><Button variant="success"><Link className="landingNav-button-login" to="/organizer/login">Organizer Login</Link></Button>&nbsp;
+                <Button variant="success"><Link className="landingNav-button-login" to="/player/login">Player Login</Link></Button>&nbsp;
               </div>
-              <div className="flex flex-center"><Button variant="success"><Link className="landingNav-button-register" to="../organizer/register">Organizer Register</Link></Button>
+              <div className="flex flex-center"><Button variant="success"><Link className="landingNav-button-register" to="/organizer/register">Organizer Register</Link></Button>
               </div>
             </Form>
           </div>

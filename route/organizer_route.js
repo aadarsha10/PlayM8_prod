@@ -1,7 +1,7 @@
 const express = require('express')
 const router = express.Router()
 const organizer = require('../models/organizer_detail_model')
-const email_noti = require('../middleware/email_notifier.js')
+const email_noti = require('../middleware/email_notifier')
 const { check, validationResult } = require('express-validator')
 const bcryptjs = require('bcryptjs')
 const jwt = require('jsonwebtoken')
