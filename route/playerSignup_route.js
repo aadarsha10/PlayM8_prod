@@ -38,7 +38,7 @@ router.post('/register/player', function (req, res) {
 })
 
 //login system
-router.post('/login/player', function (req, res) {
+router.post('/player/login', function (req, res) {
     const userName = req.body.username
     const password = req.body.password   //user provided password
     //we need to find if user exists

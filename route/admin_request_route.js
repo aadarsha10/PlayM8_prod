@@ -56,7 +56,7 @@ router.post(
   }
 );
 
-router.get("/getRequest", function (req, res) {
+router.get("/admin/orgRegister/getRequest", function (req, res) {
   admin_request
     .find()
     .exec()

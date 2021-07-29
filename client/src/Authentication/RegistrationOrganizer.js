@@ -4,7 +4,7 @@ import "../scss/Registration.scss";
 import { Form } from "react-bootstrap";
 // import Alert from 'react-bootstrap/Alert'
 import axios from "axios";
-
+import LandingNavbar from "../Components/LandingNavbar"
 export default function RegistrationPlayer() {
   const [FullName, setFullName] = useState("");
   const [Email, setEmail] = useState("");
@@ -29,7 +29,7 @@ export default function RegistrationPlayer() {
   const addEvent = (e) => {
     e.preventDefault();
 
-    axios.post("/register", data).then((response) => {
+    axios.post("/admin/approve/register", data).then((response) => {
       console.log("response", response);
 
       if (response.data.message === "Fields Must not be Empty") {
@@ -44,15 +44,14 @@ export default function RegistrationPlayer() {
 
   return (
     <div>
-      <NavBar />
+      <LandingNavbar />
       {ShowAlert === false && (
         <div className="alert alert-danger">
           <h4 className="alert-heading">
-            Hello Oraganizer. Sorry to Say THAT !!
+            Sorry, registration request failed.
           </h4>
           <p>
-            You have failed to insert correct data. You must fill all the fields
-            in the form
+            Please Fill all the fields correctly!
           </p>
           <hr></hr>
 

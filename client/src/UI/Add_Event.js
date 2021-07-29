@@ -159,10 +159,9 @@ export default function Add_Event() {
       )}
       {ShowAlert === true && (
         <div className="alert alert-success" role="alert">
-          <h4 className="alert-heading">Hello Oraganizer. Congratulations!!</h4>
+          <h4 className="alert-heading">Congratulations!!</h4>
           <p>
-            You have Successfully Entered your Event. Please check account
-            section to
+            You have Successfully Entered your Event.
           </p>
           <hr></hr>
 

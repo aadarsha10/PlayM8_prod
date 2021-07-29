@@ -29,7 +29,7 @@ export default function RegistrationPlayer() {
   const addEvent = (e) => {
     e.preventDefault();
 
-    axios.post("/register", data).then((response) => {
+    axios.post("/register/player", data).then((response) => {
       console.log("response", response);
 
       if (response.data.message === "Fields Must not be Empty") {
@@ -48,11 +48,10 @@ export default function RegistrationPlayer() {
       {ShowAlert === false && (
         <div className="alert alert-danger">
           <h4 className="alert-heading">
-            Hello Oraganizer. Sorry to Say THAT !!
+            Sorry, registration request failed.
           </h4>
           <p>
-            You have failed to insert correct data. You must fill all the fields
-            in the form
+            Please Fill all the fields correctly!
           </p>
           <hr></hr>
 
@@ -144,13 +143,12 @@ export default function RegistrationPlayer() {
       )}
       {ShowAlert === true && (
         <div className="alert alert-success" role="alert">
-          <h4 className="alert-heading">Hello Oraganizer. Congratulations!!</h4>
+          <h4 className="alert-heading">Congratulations!!</h4>
           <p>
-            You have Successfully been registered. Please check account
-            section to
+            You have been successfully registered. Please check account
+            section to login.
           </p>
           <hr></hr>
-
           <p>Thank You !!!</p>
         </div>
       )}

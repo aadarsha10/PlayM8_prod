@@ -1,9 +1,10 @@
 import React, { useState } from "react";
-import NavBar from "../Components/NavBar";
+// import NavBar from "../Components/NavBar";
 import "../scss/Registration.scss";
 import { Form } from "react-bootstrap";
 // import Alert from 'react-bootstrap/Alert'
 import axios from "axios";
+import LandingNavbar from "../Components/LandingNavbar.js";
 
 export default function Player_login() {
   const [Username, setUsername] = useState("");
@@ -34,7 +35,7 @@ export default function Player_login() {
 
   return (
     <div>
-      <NavBar />
+      <LandingNavbar />
       {ShowAlert === false && (
         <div className="alert alert-danger container">
           <h4 className="alert-heading">
